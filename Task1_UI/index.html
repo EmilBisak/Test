@@ -14,7 +14,7 @@
 
 		<form action="#">
 
-			<div style="position:relative">
+			<header class="form-header">
 				<div class="c100 p0 big">
 					<span class="font-family-Avenir font-size-super">0%</span>
 					<div class="slice">
@@ -23,7 +23,11 @@
 					</div>
 					<p class="complete-text font-family-primary font-weight-regular"></p>
 				</div>
-			</div>
+				<h1>
+					<span>New York State</span>
+					Request for Contact
+				</h1>
+			</header>
 
 			<div class="input-holder">
 				<div class="check_mark">
@@ -76,25 +80,29 @@
 				</div>
 			</div>
 
-			<div class="input-holder">
-				<div class="check_mark">
-					<div class="sa-icon sa-success animate">
-						<span class="sa-line sa-tip animateSuccessTip"></span>
-						<span class="sa-line sa-long animateSuccessLong"></span>
-						<div class="sa-placeholder"><span>4</span></div>
-						<div class="sa-fix"></div>
+			<div class="radio-holder">
+				<div class="radio-label">
+					<div class="check_mark">
+						<div class="sa-icon sa-success animate radio">
+							<span class="sa-line sa-tip animateSuccessTip radio"></span>
+							<span class="sa-line sa-long animateSuccessLong radio"></span>
+							<div class="sa-placeholder radio"><span>4</span></div>
+							<div class="sa-fix"></div>
+						</div>
 					</div>
+					<label for="radio-btns"><span>What is the best time</span> to contact you?</label>
 				</div>
-				<div class="group radio-btns">
-					<label for="radio-btns">What is the best time to contact you?</label>
 
-					<p>Monday <input type="radio" name="days" value="monday" id="monday"> </p>
-					<p>Tuesday <input type="radio" name="days" value="tuesday" id="tuesday"> </p>
-					<p>Wednesday <input type="radio" name="days" value="wednesday"> </p>
-					<p>Thursday <input type="radio" name="days" value="thursday"> </p>
-					<p>Friday <input type="radio" name="days" value="friday"> </p>
+				<div class="group radio-btns">
+					<p><input type="radio" name="days" value="monday" class="option-input radio" required> Monday 3pm</p>
+					<p><input type="radio" name="days" value="tuesday" class="option-input radio"> Tuesday 3pm</p>
+					<p><input type="radio" name="days" value="wednesday" class="option-input radio"> Wednesday 3pm</p>
+					<p><input type="radio" name="days" value="thursday" class="option-input radio"> Thursday 3pm</p>
+					<p><input type="radio" name="days" value="friday" class="option-input radio"> Friday 3pm</p>
 				</div>
 			</div>
+
+			<input type="submit" value="Submit">
 
 		</form>
 	</div>

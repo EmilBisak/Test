@@ -16,6 +16,12 @@ let numberEmail = document.querySelector(".sa-placeholder.email span")
 let successLineEmail = document.querySelectorAll(".sa-icon.sa-success.email")
 let lineEmail = document.querySelectorAll(".sa-line.email")
 
+let radioInput = document.querySelectorAll("input[type='radio']")
+let successRadio = document.querySelector(".sa-success.radio")
+let numberRadio = document.querySelector(".sa-placeholder.radio span")
+let successLineRadio = document.querySelectorAll(".sa-icon.sa-success.radio")
+let lineRadio = document.querySelectorAll(".sa-line.radio")
+
 let percentageCircle = document.querySelector(".c100")
 let percentageSpan = document.querySelector("span.font-size-super")
 let checkedInput = new Set();
@@ -32,8 +38,12 @@ successLineLastName.forEach(e => e.style.borderColor = "#fff")
 lineEmail.forEach(e => e.style.display = "none")
 successLineEmail.forEach(e => e.style.borderColor = "#fff")
 
-const animationHandlerFirst = () => {
+lineRadio.forEach(e => e.style.display = "none")
+radioInput.forEach(e => e.checked = false)
+successLineRadio.forEach(e => e.style.borderColor = "#fff")
 
+const animationHandlerFirst = () => {
+    
     if (firstName.value.length > 0) {
         successFirstName.classList.add("hide");
         numberFirstName.classList.add("hide");
@@ -47,9 +57,8 @@ const animationHandlerFirst = () => {
         checkedInput.delete(firstName)
         percentageCircle.classList.remove(`p${checkedInput.size ? checkedInput.size * 25 + 25 : checkedInput.size + 25}`)
     }
-
+    
     percentageSpan.innerHTML = checkedInput.size ? checkedInput.size * 25 + "%" : checkedInput.size + "%";
-
     setTimeout(function () {
         successFirstName.classList.remove("hide");
     }, 10);
@@ -70,10 +79,8 @@ const animationHandlerLast = () => {
         checkedInput.delete(lastName)
         percentageCircle.classList.remove(`p${checkedInput.size ? checkedInput.size * 25 + 25 : checkedInput.size + 25}`)
     }
-
+    
     percentageSpan.innerHTML = checkedInput.size ? checkedInput.size * 25 + "%" : checkedInput.size + "%";
-    console.log(checkedInput);
-
     setTimeout(function () {
         successLastName.classList.remove("hide");
     }, 10);
@@ -81,7 +88,7 @@ const animationHandlerLast = () => {
 
 
 const animationHandlerEmail = () => {
-    if (email.value.length > 0) {
+    if (email.value.length > 0 && email.value.includes("@" && ".com")) {
         successEmail.classList.add("hide");
         numberEmail.classList.add("hide");
         lineEmail.forEach(e => e.style.display = "block")
@@ -94,17 +101,43 @@ const animationHandlerEmail = () => {
         checkedInput.delete(email)
         percentageCircle.classList.remove(`p${checkedInput.size ? checkedInput.size * 25 + 25 : checkedInput.size + 25}`)
     }
-
+    
     percentageSpan.innerHTML = checkedInput.size ? checkedInput.size * 25 + "%" : checkedInput.size + "%";
-    console.log(checkedInput);
-
     setTimeout(function () {
         successEmail.classList.remove("hide");
     }, 10);
 }
 
+
+function animationHandlerRadio() {
+    radioInput.forEach(e => e.checked = false);
+    this.checked = true;
+    
+    if (this.checked) {
+        successRadio.classList.add("hide");
+        numberRadio.classList.add("hide");
+        lineRadio.forEach(e => e.style.display = "block")
+        successLineRadio.forEach(e => e.style.borderColor = "rgb(33, 150, 243)")
+        checkedInput.add(radioInput)
+        percentageCircle.classList.add(`p${checkedInput.size ? checkedInput.size * 25 : checkedInput.size}`)
+    } else {
+        lineRadio.forEach(e => e.style.display = "none")
+        numberRadio.classList.remove("hide");
+        checkedInput.delete(radioInput)
+        percentageCircle.classList.remove(`p${checkedInput.size ? checkedInput.size * 25 + 25 : checkedInput.size + 25}`)
+    }
+    
+    percentageSpan.innerHTML = checkedInput.size ? checkedInput.size * 25 + "%" : checkedInput.size + "%";
+    setTimeout(function () {
+        successRadio.classList.remove("hide");
+    }, 10);
+}
+
+
+
 firstName.addEventListener("blur", animationHandlerFirst)
 lastName.addEventListener("blur", animationHandlerLast)
 email.addEventListener("blur", animationHandlerEmail)
+radioInput.forEach(e => e.addEventListener("click", animationHandlerRadio))
 
 
