@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Task 1</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<div class="container">
+
+		<form action="#">
+
+			<div style="position:relative">
+				<div class="c100 p0 big">
+					<span class="font-family-Avenir font-size-super">0%</span>
+					<div class="slice">
+						<div class="bar"></div>
+						<div class="fill"></div>
+					</div>
+					<p class="complete-text font-family-primary font-weight-regular"></p>
+				</div>
+			</div>
+
+			<div class="input-holder">
+				<div class="check_mark">
+					<div class="sa-icon sa-success animate first-name">
+						<span class="sa-line sa-tip animateSuccessTip first-name"></span>
+						<span class="sa-line sa-long animateSuccessLong first-name"></span>
+						<div class="sa-placeholder first-name"><span>1</span></div>
+						<div class="sa-fix"></div>
+					</div>
+				</div>
+				<div class="group">
+					<input id="first-name" name="first-name" type="text" required>
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label for="first-name">First Name</label>
+				</div>
+			</div>
+
+			<div class="input-holder">
+				<div class="check_mark">
+					<div class="sa-icon sa-success animate last-name">
+						<span class="sa-line sa-tip animateSuccessTip last-name"></span>
+						<span class="sa-line sa-long animateSuccessLong last-name"></span>
+						<div class="sa-placeholder last-name"><span>2</span></div>
+						<div class="sa-fix"></div>
+					</div>
+				</div>
+				<div class="group">
+					<input id="last-name" name="last-name" type="text" required />
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label for="last-name">Last Name</label>
+				</div>
+			</div>
+
+			<div class="input-holder">
+				<div class="check_mark">
+					<div class="sa-icon sa-success animate email">
+						<span class="sa-line sa-tip animateSuccessTip email"></span>
+						<span class="sa-line sa-long animateSuccessLong email"></span>
+						<div class="sa-placeholder email"><span>3</span></div>
+						<div class="sa-fix"></div>
+					</div>
+				</div>
+				<div class="group">
+					<input id="email" name="email" type="email" required />
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label for="email">Email Address</label>
+				</div>
+			</div>
+
+			<div class="input-holder">
+				<div class="check_mark">
+					<div class="sa-icon sa-success animate">
+						<span class="sa-line sa-tip animateSuccessTip"></span>
+						<span class="sa-line sa-long animateSuccessLong"></span>
+						<div class="sa-placeholder"><span>4</span></div>
+						<div class="sa-fix"></div>
+					</div>
+				</div>
+				<div class="group radio-btns">
+					<label for="radio-btns">What is the best time to contact you?</label>
+
+					<p>Monday <input type="radio" name="days" value="monday" id="monday"> </p>
+					<p>Tuesday <input type="radio" name="days" value="tuesday" id="tuesday"> </p>
+					<p>Wednesday <input type="radio" name="days" value="wednesday"> </p>
+					<p>Thursday <input type="radio" name="days" value="thursday"> </p>
+					<p>Friday <input type="radio" name="days" value="friday"> </p>
+				</div>
+			</div>
+
+		</form>
+	</div>
+
+
+	<script src="main.js"></script>
+</body>
+
+</html>
