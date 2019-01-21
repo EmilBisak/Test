@@ -1,0 +1,456 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import "mixins";
+@import "variables";
+@import "animations";
+
+
+* {
+    box-sizing: border-box;
+}
+
+/* basic stylings ------------------------------------------ */
+
+body {
+    background: rgb(56, 131, 169);
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    width: 95%;
+    margin: 30px auto 0;
+    display: flex;
+    justify-content: center;
+    background: $bg-color;
+    padding: 10px 50px 50px;
+    overflow: hidden;
+}
+
+/* form starting stylings ------------------------------- */
+
+.input-holder {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.group {
+    position: relative;
+    margin-left: 45px;
+}
+
+input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #757575;
+    margin-right: 0;
+    background-color: $bg-color;
+}
+
+input:focus {
+    outline: none;
+}
+
+/* LABEL ======================================= */
+
+label {
+    color: $text-color;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.radio-btns {
+    input {
+        display: inline-block;
+    }
+}
+
+/* active state */
+
+input:focus~label,
+input:valid~label {
+    top: -20px;
+    font-size: 14px;
+    color: $text-color;
+}
+
+/* BOTTOM BARS ================================= */
+
+.bar {
+    position: relative;
+    display: block;
+    width: 300px;
+}
+
+.bar:before,
+.bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    position: absolute;
+    background: $primary-color;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.bar:after {
+    left: 0%;
+}
+
+/* active state */
+
+input:focus~.bar:before,
+input:focus~.bar:after {
+    width: 100%;
+}
+
+/* HIGHLIGHTER ================================== */
+
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* active state */
+
+input:focus~.highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+
+@include inputHighlighter();
+
+/* CHECK MARK */
+
+.check_mark {
+    width: 10px;
+    height: 87px;
+    margin-left: 40px;
+}
+
+button {
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.hide {
+    display: none;
+}
+
+.sa-icon {
+    width: 40px;
+    height: 40px;
+    border: 4px solid $primary-color;
+    @include border-radius(40px);
+    @include border-radius(50%);
+    margin: 20px auto;
+    padding: 0;
+    position: relative;
+    box-sizing: content-box;
+}
+
+.sa-icon.sa-success {
+    border-color: $primary-color;
+}
+
+.sa-icon.sa-success::before,
+.sa-icon.sa-success::after {
+    content: '';
+    @include border-radius(40px);
+    @include border-radius(50%);
+    position: absolute;
+    width: 60px;
+    height: 120px;
+    background: $bg-color;
+    @include rotate(45deg);
+}
+
+.sa-icon.sa-success::before {
+    top: -14px;
+    left: -33px;
+    @include transform-origin(60px 60px);
+    @include border-radius(120px 0 0 120px);
+    @include rotate(-45deg);
+}
+
+.sa-icon.sa-success::after {
+    top: -22px;
+    left: 30px;
+    @include transform-origin(0 60px);
+    @include border-radius(0 120px 120px 0);
+    @include rotate(-45deg);
+}
+
+.sa-icon.sa-success {
+    .sa-placeholder {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        line-height: 40px;
+        font-weight: bold;
+        color: $primary-color;
+        box-shadow: 0 0 8px #888;
+        @include border-radius(40px);
+        @include border-radius(50%);
+        box-sizing: content-box;
+        position: absolute;
+        left: 0px;
+        top: -1px;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.sa-icon.sa-success {
+    .sa-fix {
+        width: 10px;
+        height: 52px;
+        background-color: $bg-color;
+        position: absolute;
+        left: 8px;
+        top: 2px;
+        z-index: 1;
+        @include rotate(-45deg);
+    }
+}
+
+.sa-icon.sa-success.animate::after {
+    -webkit-animation: rotatePlaceholder 6.5s ease-in;
+    animation: rotatePlaceholder 6.5s ease-in;
+}
+
+.sa-icon.sa-success {
+    border-color: $primary-color;
+    .sa-line.sa-tip {
+        @include rotate(45deg);
+    }
+    .sa-line.sa-long {
+        @include rotate(-45deg);
+    }
+    .sa-line {
+        height: 5px;
+        background-color: $primary-color;
+        display: block;
+        @include border-radius(2px);
+        position: absolute;
+        z-index: 2;
+    }
+    .sa-line.sa-tip {
+        width: 13px;
+        left: 7px;
+        top: 23px;
+        @include rotate(45deg);
+    }
+    .sa-line.sa-long {
+        width: 24px;
+        right: 4px;
+        top: 19px;
+        @include rotate(-45deg);
+    }
+}
+
+.animateSuccessTip {
+    -webkit-animation: animateSuccessTip 1.2s;
+    animation: animateSuccessTip 1.2s;
+}
+
+.animateSuccessLong {
+    -webkit-animation: animateSuccessLong 1.2s;
+    animation: animateSuccessLong 1.2s;
+}
+
+@include animateSuccessLong();
+
+@include animateSuccessTip();
+
+@include rotatePlaceholder();
+
+/* CHECK MARK END */
+
+// CIRCLE
+.rect-auto {
+    clip: rect(auto, auto, auto, auto);
+}
+
+.pie {
+    position: absolute;
+    border: $circle-width solid $primary-color;
+    width: 1 - (2 * $circle-width);
+    height: 1 - (2 * $circle-width);
+    clip: rect(0em, 0.5em, 1em, 0em);
+    @include border-radius(50%);
+    @include rotate(0deg);
+}
+
+.pie-fill {
+    @include rotate(180deg);
+}
+
+.fill:after {
+    content: "";
+    position: absolute;
+    @include background-image(#2a2d7e,
+    #ee1d7d);
+    top: -25px;
+    bottom: 0;
+    width: 30px;
+    clip: 0, 0.5em, 1em, 0 !important;
+    clip: rect(0em, 0.5em, 1em, 0em);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    width: 0.84em;
+    z-index: 998.4;
+    width: 310px;
+    height: 310px;
+    @include border-radius(50%);
+    right: 0 !important;
+    left: -24px !important;
+    clip: rect(0em, 0.5em, 1em, 0em);
+}
+
+.bar:before {
+    content: "";
+    position: absolute;
+    @include background-image(#2a2d7e,
+    #332c7e);
+    top: -26px;
+    bottom: 0;
+    width: 30px;
+    clip: 0, 0.5em, 1em, 0 !important;
+    clip: rect(0em, 0.5em, 1em, 0em);
+    width: 0.84em;
+    z-index: 998.4;
+    width: 310px;
+    height: 310px;
+    right: 0 !important;
+    left: -24px !important;
+    clip: rect(0em, 1em, 0.5em, 0em);
+    z-index: 999;
+    @include border-radius(50%);
+    @include rotate(270deg);
+}
+
+.c100 {
+    *,
+    *:before,
+    *:after {
+        // @include box-sizing(content-box);
+        box-sizing: content-box;
+        transition: all .05s;
+    }
+    box-shadow:inset 1px 1.7px 6px 0 rgba(0,
+    0,
+    0,
+    0.06);
+    position: relative;
+    font-size: 120px;
+    width: 1em;
+    height: 1em;
+    @include border-radius(50%);
+    margin: 0 0.1em 0.1em 0;
+    margin: 0 auto;
+    background-color: $secondary-color; // center circle to its parent
+    &.center {
+        float: none;
+        margin: 0 auto;
+    } // bigger size
+    &.big {
+        font-size: 60px;
+    } // smaller size
+    &.small {
+        font-size: 80px;
+    } // centered value inside circle
+    >span {
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+        left: -20px;
+        top: -20px;
+        width: 100px;
+        line-height: 100px;
+        font-size: 0.28em;
+        color: $secondary-color;
+        display: block;
+        text-align: center;
+        white-space: nowrap;
+        transition-property: all;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-out;
+        @include background-image(#563490,
+        #ee3656);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    } // background inside the circle
+    &:after {
+        position: absolute;
+        top: $circle-width;
+        left: $circle-width;
+        display: block;
+        content: " ";
+        @include border-radius(50%);
+        background-color: $bg-color;
+        width: 1 - (2 * $circle-width);
+        height: 1 - (2 * $circle-width); // @include transition-property(all);
+        // @include transition-duration(0.2s);
+        // @include transition-timing-function(ease-in);
+        transition-property: all;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-out;
+    } // the slice (mask)
+    .slice {
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        clip: rect(0em, 1em, 1em, 0.5em);
+    } // circle to show the status
+    .bar {
+        @extend .pie;
+    } // loop to create all needed elements automatically
+    @for $j from 51 through 100 {
+        &.p#{$j} .slice {
+            @extend .rect-auto;
+        }
+        &.p#{$j} .bar:after {
+            @extend .pie-fill;
+        }
+        &.p#{$j} .fill {
+            @extend .pie;
+            @extend .pie-fill;
+        }
+    } // loop to rotate all 100 circles
+    @for $j from 1 through 100 {
+        &.p#{$j} .bar {
+            @include rotate((360/100*$j)+deg);
+        }
+    }
+}
+
+.c100:after {
+    top: 0.13em;
+    left: 0.13em;
+    width: 0.74em;
+    height: 0.74em;
+}

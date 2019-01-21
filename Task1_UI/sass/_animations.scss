@@ -1,0 +1,227 @@
+@mixin inputHighlighter() {
+    @-webkit-keyframes inputHighlighter {
+        from {
+            background: $primary-color;
+        }
+        to {
+            width: 0;
+            background: transparent;
+        }
+    }
+    @-moz-keyframes inputHighlighter {
+        from {
+            background: $primary-color;
+        }
+        to {
+            width: 0;
+            background: transparent;
+        }
+    }
+    @keyframes inputHighlighter {
+        from {
+            background: $primary-color;
+        }
+        to {
+            width: 0;
+            background: transparent;
+        }
+    }
+}
+
+@mixin animateSuccessLong() {
+    @-webkit-keyframes animateSuccessLong {
+        0% {
+            width: 0;
+            right: 23px;
+            top: 27px;
+        }
+        65% {
+            width: 0;
+            right: 23px;
+            top: 27px;
+        }
+        84% {
+            width: 26px;
+            right: 0px;
+            top: 17px;
+        }
+        100% {
+            width: 24px;
+            right: 4px;
+            top: 19px;
+        }
+    }
+    @-moz-keyframes animateSuccessLong {
+        0% {
+            width: 0;
+            right: 23px;
+            top: 27px;
+        }
+        65% {
+            width: 0;
+            right: 23px;
+            top: 27px;
+        }
+        84% {
+            width: 26px;
+            right: 0px;
+            top: 17px;
+        }
+        100% {
+            width: 24px;
+            right: 4px;
+            top: 19px;
+        }
+    }
+    @keyframes animateSuccessLong {
+        0% {
+            width: 0;
+            right: 23px;
+            top: 27px;
+        }
+        65% {
+            width: 0;
+            right: 23px;
+            top: 27px;
+        }
+        84% {
+            width: 26px;
+            right: 0px;
+            top: 17px;
+        }
+        100% {
+            width: 24px;
+            right: 4px;
+            top: 19px;
+        }
+    }
+}
+
+@mixin animateSuccessTip() {
+    @-webkit-keyframes animateSuccessTip {
+        0% {
+            width: 0;
+            left: 0px;
+            top: 2px;
+        }
+        54% {
+            width: 0;
+            left: 0px;
+            top: 10px;
+        }
+        70% {
+            width: 28px;
+            left: -4px;
+            top: 16px;
+        }
+        84% {
+            width: 9px;
+            left: 11px;
+            top: 19px;
+        }
+        100% {
+            width: 12px;
+            left: 8px;
+            top: 24px;
+        }
+    }
+    @-moz-keyframes animateSuccessTip {
+        0% {
+            width: 0;
+            left: -4px;
+            top: 0px;
+        }
+        54% {
+            width: 0;
+            left: 0px;
+            top: 10px;
+        }
+        70% {
+            width: 28px;
+            left: -4px;
+            top: 16px;
+        }
+        84% {
+            width: 9px;
+            left: 11px;
+            top: 20px;
+        }
+        100% {
+            width: 12px;
+            left: 8px;
+            top: 24px;
+        }
+    }
+    @keyframes animateSuccessTip {
+        0% {
+            width: 0;
+            left: -4px;
+            top: 0px;
+        }
+        54% {
+            width: 0;
+            left: 0px;
+            top: 10px;
+        }
+        70% {
+            width: 28px;
+            left: -4px;
+            top: 16px;
+        }
+        84% {
+            width: 9px;
+            left: 11px;
+            top: 20px;
+        }
+        100% {
+            width: 12px;
+            left: 8px;
+            top: 24px;
+        }
+    }
+}
+
+@mixin rotatePlaceholder() {
+    @-webkit-keyframes rotatePlaceholder {
+        0% {
+            @include rotate(-45deg);
+        }
+        5% {
+            @include rotate(-45deg);
+        }
+        12% {
+            @include rotate(-405deg);
+        }
+        100% {
+            @include rotate(-405deg);
+        }
+    }
+    @-moz-keyframes rotatePlaceholder {
+        0% {
+            @include rotate(-45deg);
+        }
+        5% {
+            @include rotate(-45deg);
+        }
+        12% {
+            @include rotate(-405deg);
+        }
+        100% {
+            @include rotate(-405deg);
+        }
+    }
+    @keyframes rotatePlaceholder {
+        0% {
+            @include rotate(-45deg);
+        }
+        5% {
+            @include rotate(-45deg);
+        }
+        12% {
+            @include rotate(-405deg);
+        }
+        100% {
+            @include rotate(-405deg);
+        }
+    }
+}
