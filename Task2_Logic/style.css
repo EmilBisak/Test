@@ -28,7 +28,7 @@ header {
 }
 
 .hit {
-    color: #1aae9f !important;
+    color: green !important;
 }
 
 .miss {
@@ -48,6 +48,7 @@ header {
 #letterInput {
     width: 300px;
     margin: 0 auto 30px;
+    text-transform: uppercase;
 }
 
 .letters {

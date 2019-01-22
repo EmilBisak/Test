@@ -13,7 +13,7 @@ let level = 500;
 let count = level;
 let numberOfPassedLetters = 0;
 let lettersLeft = 26;
-let hit = 0;
+let hitLetterArr = [];
 let miss = [];
 let current;
 let inputLetterTyped = "?";
@@ -53,13 +53,16 @@ function matchTypedLetterWithCurrentLetter(e) {
     current = lettersArr[numberArr[numberOfPassedLetters] - 1]
     if (inputLetterTyped === current) {
         console.log("CORRECT!!!");
-        hit++
-        hitElement.innerHTML = `Hit: ${hit}`;
+        hitLetterArr.push(current)
+        console.log("hitLetterArr -- ", hitLetterArr);
+
+        hitElement.innerHTML = `Hit: ${hitLetterArr.length}`;
         pastNumberArr.pop()
     } else {
         console.log("WRONG!!!");
 
     }
+    createLetterList()
 
 }
 
@@ -68,12 +71,12 @@ function timer() {
 
     if (count >= 0 && numberOfPassedLetters < 26) {
 
-        letterInput.value = "";
         // currentLetter.innerHTML = count / 100 + " secs";
         currentLetter.innerHTML = numberArr[numberOfPassedLetters];
-
+        
     } else if (numberOfPassedLetters <= 26) {
-
+        // createLetterList()
+        letterInput.value = "";
         letterInput.addEventListener("keyup", matchTypedLetterWithCurrentLetter);
         count = level;
         numberOfPassedLetters++;
@@ -85,6 +88,7 @@ function timer() {
         console.log("numberArr", numberArr);
         timer();
         pastNumberArr.push(numberArr[numberOfPassedLetters]);
+        pastLetters.push(numberArr[numberOfPassedLetters]);
 
     } else {
         clearInterval(counter);
@@ -115,9 +119,12 @@ function createLetterList() {
     lettersElement.innerHTML = "";
     for (let i = 0; i < lettersArr.length; i++) {
         const element = lettersArr[i];
-        lettersElement.innerHTML += `<div class="letter-wrapper"><h2>${element} (${i + 1})</h2></div>`;
-        numberArr.push(i + 1);
+        let current = pastLetters[pastLetters.length - 1];
+
+        lettersElement.innerHTML += `<div class="letter-wrapper"><h2 class="${hitLetterArr.includes(element) ? 'hit' : ''}">${element} (${i + 1})</h2></div>`;
+        // pastNumberArr.includes(current)? 'miss': ''
     }
+
 }
 
 
@@ -125,6 +132,9 @@ function createLetterList() {
 function init() {
     // Show letter list in UI
     createLetterList();
+    for (let i = 0; i < lettersArr.length; i++) {
+        numberArr.push(i + 1);
+    }
     // Shuffle random letter number in numberArr
     shuffle(numberArr);
 }
