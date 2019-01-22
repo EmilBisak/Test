@@ -1,4 +1,4 @@
-let lettersElement = document.querySelector(".letters");
+let lettersElement = document.querySelector(".letters-container");
 let currentLetter = document.querySelector("#current-letter");
 let letterInput = document.querySelector("#letterInput");
 let hitElement = document.querySelector(".hit");
@@ -73,19 +73,16 @@ function timer() {
 
         // currentLetter.innerHTML = count / 100 + " secs";
         currentLetter.innerHTML = numberArr[numberOfPassedLetters];
-        
+
     } else if (numberOfPassedLetters <= 26) {
-        // createLetterList()
         letterInput.value = "";
+        createLetterList()
         letterInput.addEventListener("keyup", matchTypedLetterWithCurrentLetter);
         count = level;
         numberOfPassedLetters++;
         lettersLeft--;
-        console.log(numberOfPassedLetters);
         missElement.innerHTML = `Miss: ${pastNumberArr.length}`;
         leftElement.innerHTML = `Left: ${lettersLeft !== -1 ? lettersLeft : 0}`;
-        console.log("pastNumberArr", pastNumberArr);
-        console.log("numberArr", numberArr);
         timer();
         pastNumberArr.push(numberArr[numberOfPassedLetters]);
         pastLetters.push(numberArr[numberOfPassedLetters]);
@@ -94,6 +91,9 @@ function timer() {
         clearInterval(counter);
         startBtn.innerHTML = "Restart Game";
         startBtn.addEventListener("click", () => { window.location.reload() });
+        startBtn.focus();
+        currentLetter.innerHTML = "Game Over";
+        currentLetter.style.color = "#788896";
         return;
 
     }
@@ -119,12 +119,28 @@ function createLetterList() {
     lettersElement.innerHTML = "";
     for (let i = 0; i < lettersArr.length; i++) {
         const element = lettersArr[i];
-        let current = pastLetters[pastLetters.length - 1];
+        let current = i + 1
 
-        lettersElement.innerHTML += `<div class="letter-wrapper"><h2 class="${hitLetterArr.includes(element) ? 'hit' : ''}">${element} (${i + 1})</h2></div>`;
-        // pastNumberArr.includes(current)? 'miss': ''
+        lettersElement.innerHTML += `<div class="letter-wrapper"><h2 id="${current}" class=" letter${hitLetterArr.includes(element) ? ' correct' : ''}">${element} (${current})</h2></div>`;
     }
+    LetterIsMissed();
+}
 
+function createNumberArr() {
+    for (let i = 0; i < lettersArr.length; i++) {
+        numberArr.push(i + 1);
+    }
+}
+
+
+
+function LetterIsMissed() {
+    let textEl = document.querySelectorAll(".letter");
+    textEl.forEach(element => {
+        if (pastNumberArr.includes(parseInt(element.getAttribute("id")))) {
+            element.classList.add("wrong")
+        }
+    });
 }
 
 
@@ -132,9 +148,8 @@ function createLetterList() {
 function init() {
     // Show letter list in UI
     createLetterList();
-    for (let i = 0; i < lettersArr.length; i++) {
-        numberArr.push(i + 1);
-    }
+    // Create number array
+    createNumberArr()
     // Shuffle random letter number in numberArr
     shuffle(numberArr);
 }

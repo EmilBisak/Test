@@ -28,17 +28,16 @@ header {
 }
 
 .hit {
-    color: green !important;
+    color: green;
 }
 
 .miss {
-    color: #d3455b !important;
+    color: #d3455b;
 }
 
 .left {
     color: #6558f5;
 }
-
 
 #current-letter {
     text-align: center;
@@ -51,32 +50,44 @@ header {
     text-transform: uppercase;
 }
 
-.letters {
+.letters-container {
     display: grid;
     justify-content: flex-start;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
-.letters .letter-wrapper {
+.letters-container .letter-wrapper {
     padding: 10px;
     margin-bottom: 5px;
     text-align: center;
 }
 
-.letters .letter-wrapper h2 {
+.letters-container .letter-wrapper h2 {
     text-transform: uppercase;
     color: #999;
 }
 
+.correct {
+    color: green !important;
+    text-shadow: 2px 1px 1px #788896;
+    font-size: 2.05rem;
+}
+
+.wrong {
+    color: #d3455b !important;
+    text-shadow: 2px 1px 1px #788896;
+    font-size: 2.05rem;
+}
+
 @media only screen and (max-width: 992px) {
-    .letters {
+    .letters-container {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
 
 @media only screen and (max-width: 768px) {
-    .letters .letter-wrapper h2 {
-        font-size: 1.5rem;
+    .letters-container .letter-wrapper h2 {
+        font-size: 1.7rem;
     }
 }
 
@@ -89,14 +100,20 @@ header {
     }
 }
 
+@media only screen and (max-width: 455px) {
+    .letters-container .letter-wrapper h2 {
+        font-size: 1.42rem;
+    }
+}
+
 @media only screen and (max-width: 400px) {
     #letterInput {
         width: 200px;
     }
-    .letters .letter-wrapper {
+    .letters-container .letter-wrapper {
         padding: 10px 5px;
     }
-    .letters .letter-wrapper h2 {
-        font-size: 1.25rem;
+    .letters-container .letter-wrapper h2 {
+        font-size: 1.2rem;
     }
 }
