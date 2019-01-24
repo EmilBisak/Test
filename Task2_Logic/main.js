@@ -129,7 +129,7 @@ function timer() {
         pastLetters.push(numberArr[numberOfPassedLetters]);
 
     } else {
-        newGame()
+        gameOver()
         return;
 
     }
@@ -179,7 +179,7 @@ function LetterIsMissed() {
 }
 
 
-function newGame() {
+function gameOver() {
     clearInterval(counter);
     startBtn.innerHTML = "Restart Game";
     startBtn.className = "btn btn-warning";
