@@ -1,0 +1,120 @@
+header {
+    padding: 30px 0;
+}
+
+.radio-btns-holder {
+    margin-bottom: 30px;
+}
+
+.score-holder {
+    position: fixed;
+    top: 5px;
+    right: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.score-holder p {
+    text-align: center;
+    margin: 3px 0;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.score {
+    color: #788896;
+}
+
+.hit {
+    color: green;
+}
+
+.miss {
+    color: #d3455b;
+}
+
+.left {
+    color: #6558f5;
+}
+
+#current-letter {
+    text-align: center;
+    font-size: 4rem;
+}
+
+#letterInput {
+    width: 300px;
+    margin: 0 auto 30px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.letters-container {
+    display: grid;
+    justify-content: flex-start;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.letters-container .letter-wrapper {
+    padding: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.letters-container .letter-wrapper h2 {
+    text-transform: uppercase;
+    color: #999;
+}
+
+.correct {
+    color: green !important;
+    text-shadow: 2px 1px 1px #788896;
+    font-size: 2.05rem;
+}
+
+.wrong {
+    color: #d3455b !important;
+    text-shadow: 2px 1px 1px #788896;
+    font-size: 2.05rem;
+}
+
+@media only screen and (max-width: 992px) {
+    .letters-container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .letters-container .letter-wrapper h2 {
+        font-size: 1.7rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .score-holder {
+        position: static;
+        justify-content: space-around;
+        flex-direction: row;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 455px) {
+    .letters-container .letter-wrapper h2 {
+        font-size: 1.42rem;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #letterInput {
+        width: 200px;
+    }
+    .letters-container .letter-wrapper {
+        padding: 10px 5px;
+    }
+    .letters-container .letter-wrapper h2 {
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task2 - Logic</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="text-center">
+        <div class="radio-btns-holder">
+            <span id="easy"><input type="radio" name="level" > Easy</span>
+            <span id="medium"><input type="radio" name="level" checked> Medium</span>
+            <span id="hard"><input type="radio" name="level" > Hard</span>
+        </div>
+        <button class="btn btn-primary" id="start-btn">Start Game</button>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 mx-auto">
+                    <div class="score-holder">
+                        <p class="score">Score</p>
+                        <p class="hit">Hit: 0</p>
+                        <p class="miss">Miss: 0</p>
+                        <p class="left">Left: 26</p>
+                    </div>
+                    <h1 id="current-letter">Reflex Game</h1>
+                    <input type="text" id="letterInput" placeholder="Input Letter" class="form-control" maxlength="1">
+                    <div class="letters-container"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
