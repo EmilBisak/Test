@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import HOC from '../HOC/HOC';
 
 class ModalEditUser extends Component {
-    // <button onClick={() => props.userLogin(
-    //     {
-    //         "email": "emil@bisak",
-    //         "password": "emilbisak"
-    //     })}>Click to get authToken</button>
-
     onFormSubmitHandler = e => {
+        const { user, firstName, lastName, editUser } = this.props
         e.preventDefault();
+        editUser(
+            {
+                "first_name": firstName ? firstName : user.data.first_name,
+                "last_name": lastName ? lastName : user.data.last_name
+            },
+            user.data.id)
     }
 
     render() {
-        const { isModalActive, user, firstName, lastName, closeModal, handleInput, editUser } = this.props
+        const { isModalActive, user, closeModal, handleInput } = this.props
 
         return !isModalActive
             ?
@@ -38,12 +39,7 @@ class ModalEditUser extends Component {
                                     </div>
                                 </div>
                                 <button className="btn waves-effect waves-light" type="button" name="action"
-                                    onClick={() => editUser(
-                                        {
-                                            "first_name": firstName ? firstName : user.data.first_name,
-                                            "last_name": lastName ? lastName : user.data.last_name
-                                        },
-                                        user.data.id)}>
+                                    onClick={this.onFormSubmitHandler}>
                                     Edit User
             <i className="material-icons right">edit</i>
                                 </button>

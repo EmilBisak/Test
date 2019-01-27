@@ -24,13 +24,19 @@ class CreateUser extends Component {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Basic" + this.props.authToken,
+                "Authorization": "Basic" + this.props.getAuth(),
             },
             body: JSON.stringify(userData),
         })
+            .then(response => response.json())
             .then(response => {
                 console.log(response);
-                alert("User is created")
+                alert(`New user is created at ${response.createdAt}. 
+                User data:
+                id ${response.id}, 
+                name ${response.name}, 
+                tel ${response.tel}, 
+                dateOfBirth ${response.dateOfBirth} `)
             });
     }
 
@@ -63,7 +69,7 @@ class CreateUser extends Component {
     onFormSubmitHandler = e => {
         e.preventDefault();
         const { first_name, last_name, email, tel, date, showPhoneErr, showEmailErr } = this.state;
-        if (!showPhoneErr && !showEmailErr) {
+        if (!showPhoneErr && !showEmailErr && first_name !== "" && last_name !== "") {
             this.createUser({
                 "name": first_name + " " + last_name,
                 "job": "leader",
@@ -71,7 +77,8 @@ class CreateUser extends Component {
                 "tel": tel,
                 "dateOfBirth": date
             })
-            this.props.goToHomepage();
+            this.resetState();
+            this.props.goToPage("/users");
         }
     }
 
@@ -101,6 +108,21 @@ class CreateUser extends Component {
 
     dateHandleSelect = date => {
         this.setState({ date });
+    }
+
+    resetState = () => {
+        this.setState({
+            first_name: "",
+            last_name: "",
+            email: "",
+            tel: "",
+            date: new Date(),
+            emailErr: "",
+            phoneErr: "",
+            showPhoneErr: false,
+            showEmailErr: false,
+            maskPhoneFormat: ""
+        })
     }
 
 
@@ -142,6 +164,7 @@ class CreateUser extends Component {
                                         name="email"
                                         value={this.state.email}
                                         onChange={this.onChangeInputHandler}
+                                        required
                                     />
                                     <label htmlFor="email">Email</label>
                                     <p className={`error-msg ${showEmailErr ? "" : "hide"}`}>{emailErr}</p>
@@ -156,6 +179,7 @@ class CreateUser extends Component {
                                         className="validate"
                                         onBlur={this.onChangeInputHandler}
                                         onChange={this.maskPhoneFormat}
+                                        required
                                     />
                                     <label htmlFor="tel">Phone Number</label>
                                     <p className={`error-msg ${showPhoneErr ? "" : "hide"}`}>{phoneErr}</p>
@@ -172,7 +196,7 @@ class CreateUser extends Component {
                                 </div>
                                 <div className="col s6" id="new-user-button-holder">
                                     <button
-                                        onClick={this.onCreateNewUser}
+                                        onClick={this.onFormSubmitHandler}
                                         className="btn waves-effect waves-light disable"
                                         type="submit"
                                         name="action">Submit
